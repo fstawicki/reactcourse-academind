@@ -1,10 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Output from './Output';
 
-function Greeting() {
+
+const Greeting = () => {
+
+  const [changedText,setChangedText] = useState(false);
+
+  const changeTextHandler = () => {
+    setChangedText(true);
+  }
+
   return (
     <div>
         <h2>hello world</h2>
-        <p>its good to see u</p>
+        {!changedText && <Output>its good to see u</Output>}
+        {changedText && <Output>changed</Output>}
+        <button onClick={changeTextHandler}>CHANGE</button>
+        
     </div>
   )
 }
